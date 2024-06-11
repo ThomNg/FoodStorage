@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tng.tnabschlussprojekt.gui.FoodDetailsController">
+   <children>
+      <ImageView fx:id="detailsFood" fitHeight="104.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
+         <VBox.margin>
+            <Insets bottom="10.0" left="400.0" right="10.0" top="10.0" />
+         </VBox.margin></ImageView>
+      <Label alignment="CENTER" prefHeight="27.0" prefWidth="901.0" text="Food Details">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
+      <HBox prefHeight="48.0" prefWidth="900.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="291.0" text="Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="nameField" prefHeight="25.0" prefWidth="449.0" promptText="insert a valid name">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="97.0" prefHeight="48.0" prefWidth="900.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="291.0" text="Price">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="priceField" prefHeight="25.0" prefWidth="449.0" promptText="insert a valid price (e.g. 2.99)">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="157.0" prefHeight="48.0" prefWidth="900.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="291.0" text="Calories">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="caloriesField" prefHeight="25.0" prefWidth="449.0" promptText="insert a valid calories count">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="217.0" prefHeight="48.0" prefWidth="900.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="291.0" text="Stock">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="stockField" prefHeight="25.0" prefWidth="449.0" promptText="insert current stock">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="277.0" prefHeight="48.0" prefWidth="900.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="291.0" text="Supplier">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="supplierField" prefHeight="25.0" prefWidth="449.0" promptText="insert a supplier">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="337.0" prefHeight="48.0" prefWidth="900.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="291.0" text="Expired Date">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <DatePicker fx:id="expireDateField" prefHeight="45.0" prefWidth="448.0" promptText="select a date">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </DatePicker>
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="337.0" prefHeight="48.0" prefWidth="900.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#backToDashboardBtn" prefHeight="57.0" prefWidth="135.0" text="Back">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </Button>
+            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#onClickEditBtn" prefHeight="57.0" prefWidth="135.0" text="Edit">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="50.0" right="20.0" top="20.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </Button>
+            <Button fx:id="deleteBtn" disable="true" mnemonicParsing="false" onAction="#OnClickDeleteBtn" prefHeight="57.0" prefWidth="135.0" text="Delete">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="150.0" right="20.0" top="20.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </Button>
+            <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#OnClickSaveBtn" prefHeight="57.0" prefWidth="135.0" text="Save">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="50.0" right="20.0" top="20.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="100.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

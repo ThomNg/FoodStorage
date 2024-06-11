@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" minHeight="860.0" minWidth="900.0" prefHeight="860.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tng.tnabschlussprojekt.gui.FoodDashboardController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <HBox prefHeight="842.0" prefWidth="825.0">
+      <children>
+         <VBox prefHeight="820.0" prefWidth="643.0">
+            <children>
+            
+                <Label alignment="CENTER" prefHeight="27.0" prefWidth="679.0" text="Food Storage">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+               </Label>
+               <TextField fx:id="searchTextField" prefHeight="40.0" prefWidth="700.0" promptText="Search an item">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+               </TextField>
+               <ListView fx:id="listView" prefHeight="717.0" prefWidth="643.0" />
+            </children>
+         </VBox>
+         <Separator orientation="VERTICAL" prefHeight="200.0">
+            <HBox.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </HBox.margin>
+            <padding>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+         </Separator>
+         <VBox prefHeight="820.0" prefWidth="160.0">
+            <children>
+               <ImageView fx:id="foodIcon" fitHeight="90.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+               </ImageView>
+               <Separator layoutX="10.0" layoutY="631.0" prefWidth="200.0" />
+               <Label alignment="CENTER" prefHeight="27.0" prefWidth="150.0" text="Sorting">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+               </Label>
+               <Button mnemonicParsing="false" onAction="#onSortNameBtn" prefHeight="37.0" prefWidth="150.0" text="Name">
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
+                  </VBox.margin>
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+               </Button>
+               <Button layoutX="20.0" layoutY="47.0" mnemonicParsing="false" onAction="#onSortPriceBtn" prefHeight="37.0" prefWidth="150.0" text="Price">
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+               </Button>
+               <Button layoutX="20.0" layoutY="47.0" mnemonicParsing="false" onAction="#onSortCalorieBtn" prefHeight="37.0" prefWidth="150.0" text="Calories">
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+               </Button>
+               <Button layoutX="10.0" layoutY="132.0" mnemonicParsing="false" onAction="#OnSortStockBtn" prefHeight="37.0" prefWidth="150.0" text="Stock">
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+               </Button>
+               <Button layoutX="10.0" layoutY="169.0" mnemonicParsing="false" onAction="#OnSortSupplierBtn" prefHeight="37.0" prefWidth="150.0" text="Supplier">
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+               </Button>
+               <Button layoutX="20.0" layoutY="428.0" mnemonicParsing="false" onAction="#OnSortExpireBtn" prefHeight="37.0" prefWidth="150.0" text="Expired Date">
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+               </Button>
+               <Separator prefWidth="200.0" />
+               <Label alignment="CENTER" layoutX="10.0" layoutY="141.0" prefHeight="27.0" prefWidth="150.0" text="Create">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+               </Label>
+               <Button layoutX="20.0" layoutY="485.0" mnemonicParsing="false" onAction="#OnClickAddFoodBtn" prefHeight="37.0" prefWidth="150.0" text="Add Food">
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                  </VBox.margin>
+               </Button>
+               <Separator layoutX="10.0" layoutY="533.0" prefWidth="200.0" />
+               <Label alignment="CENTER" layoutX="10.0" layoutY="519.0" prefHeight="27.0" prefWidth="150.0" text="Utility">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+               </Label>
+               <ComboBox fx:id="cityComboBox" onAction="#onSelectComboBox" prefWidth="150.0" promptText="Select City">
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                  </VBox.margin>
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+               </ComboBox>
+               <Label fx:id="weatherLabel" alignment="CENTER" layoutX="10.0" layoutY="617.0" prefHeight="27.0" prefWidth="150.0">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+               </Label>
+               <Label fx:id="clockLabel" alignment="TOP_CENTER" prefHeight="27.0" prefWidth="150.0">
+                  <VBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+            </children>
+         </VBox>
+      </children>
+   </HBox>
+</VBox>
