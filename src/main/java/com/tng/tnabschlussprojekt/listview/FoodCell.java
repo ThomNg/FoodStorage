@@ -3,9 +3,11 @@ package com.tng.tnabschlussprojekt.listview;
 import com.tng.tnabschlussprojekt.model.Food;
 import javafx.scene.control.ListCell;
 import javafx.scene.text.Font;
-
 import java.time.format.DateTimeFormatter;
 
+/**
+ * class to transform ListView into ListCell
+ */
 public class FoodCell extends ListCell<Food> {
     @Override
     protected void updateItem(Food food, boolean isEmpty) {

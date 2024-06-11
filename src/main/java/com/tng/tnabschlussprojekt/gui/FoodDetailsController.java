@@ -16,6 +16,11 @@ import javafx.scene.image.ImageView;
 import java.time.LocalDate;
 import java.util.Optional;
 
+
+/**
+ * Food Details controller
+ * where user can edit, save and delete food item
+ */
 public class FoodDetailsController {
     //region Konstanten
     // endregion
@@ -53,6 +58,8 @@ public class FoodDetailsController {
     //region Methoden
     public void initialize(){
         detailsFood.setImage(new Image(String.valueOf(Main.class.getResource("mainFood.png"))));
+        if(selectedFood == null)
+            editBtn.setDisable(true);
     }
 
     public void setSelectedFood(Food selectedFood) {
@@ -60,6 +67,7 @@ public class FoodDetailsController {
         if(selectedFood == null) return;
 
         deleteBtn.setDisable(false);
+        editBtn.setDisable(false);
 
         nameField.setText(selectedFood.getName());
         priceField.setText(String.valueOf(selectedFood.getPrice()));

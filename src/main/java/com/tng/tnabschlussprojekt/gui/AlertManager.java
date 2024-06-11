@@ -3,9 +3,12 @@ package com.tng.tnabschlussprojekt.gui;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-
 import java.util.Optional;
 
+
+/**
+ * A Singleton-class to manage alert messages
+ */
 public class AlertManager {
     //region Konstanten
     private static AlertManager instance;

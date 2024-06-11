@@ -6,6 +6,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Main class of the food storage application
+ */
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {

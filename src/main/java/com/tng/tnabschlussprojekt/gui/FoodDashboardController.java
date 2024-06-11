@@ -5,6 +5,7 @@ import com.tng.tnabschlussprojekt.Main;
 import com.tng.tnabschlussprojekt.listview.FoodCellFactory;
 import com.tng.tnabschlussprojekt.logic.FoodManager;
 import com.tng.tnabschlussprojekt.model.Food;
+import com.tng.tnabschlussprojekt.settings.AppText;
 import javafx.animation.AnimationTimer;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,13 +24,19 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.Date;
 
+/**
+ * Food Dashboard Controller
+ * where we set an image, implement a clock and set the food's ListView
+ */
 public class FoodDashboardController {
 
     @FXML
-    public ComboBox cityComboBox;
+    public ComboBox<String> cityComboBox;
     @FXML
     private Label weatherLabel;
     @FXML
@@ -55,7 +62,7 @@ public class FoodDashboardController {
             public void handle(long now) {
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
                 String currentTime = sdf.format(new Date());
-                clockLabel.setText( currentTime);
+                clockLabel.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yy"))+" "+ currentTime);
             }
         };
         timer.start();
@@ -72,9 +79,15 @@ public class FoodDashboardController {
                 listView.setItems(FoodManager.getInstance().filterBy(newV)));
 
         // weather api
-        cityComboBox.getItems().addAll("Aachen","Bremen","Berlin","Leipzig");
-
-
+        cityComboBox.getItems().addAll("Aachen","Bremen","Berlin","Leipzig","Köln");
+        cityComboBox.getSelectionModel().selectFirst();
+        try {
+            onSelectComboBox(null);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
@@ -133,16 +146,15 @@ public class FoodDashboardController {
 
         HttpRequest getRequest = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.openweathermap.org/data/2.5/weather?q="+ selectedCity
-                        +"&appid=06eb6c65be82d246e786e4b4565bd64a&units=metric"))
+                        + "&appid=" + AppText.API_KEY + "&units=metric"))
                 .GET()
-                .header("Authorization","06eb6c65be82d246e786e4b4565bd64a").build();
+                .header("Authorization", AppText.API_KEY).build();
 
         HttpClient client = HttpClient.newHttpClient();
         HttpResponse<String> getResponse = client.send(getRequest, HttpResponse.BodyHandlers.ofString());
         //System.out.println(getResponse.body());
-
         temperature = gson.fromJson(getResponse.body(), CityTemperature.class);
 
-        return temperature.getMain().getTemp() +" C, "+temperature.getName();
+        return temperature.getMain().getTemp() +" °C, "+temperature.getName();
     }
 }

@@ -6,6 +6,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Temporary class, to test the progress of the current implementation
+ */
 public class TestData {
     //region Konstanten
     // endregion

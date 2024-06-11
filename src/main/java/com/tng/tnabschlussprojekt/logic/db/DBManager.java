@@ -1,10 +1,15 @@
 package com.tng.tnabschlussprojekt.logic.db;
 
+import com.tng.tnabschlussprojekt.model.Food;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
-
+/**
+ * Singleton-class to manage the Database access
+ */
 public class DBManager {
     //region Konstanten
     private static DBManager instance;
@@ -39,6 +44,22 @@ public class DBManager {
 
     public Connection getConnection () throws SQLException {
         return DriverManager.getConnection(CONNECTION_URL, USERNAME, PW);
+    }
+
+    public void update(Food food) {
+        foodDao.update(food);
+    }
+
+    public void insert(Food food) {
+        foodDao.create(food);
+    }
+
+    public void delete(Food food) {
+        foodDao.delete(food);
+    }
+
+    public List<Food> fetchAll(){
+        return foodDao.readAll();
     }
     //endregion
 }

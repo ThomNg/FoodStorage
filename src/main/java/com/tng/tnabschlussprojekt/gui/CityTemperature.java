@@ -1,5 +1,8 @@
 package com.tng.tnabschlussprojekt.gui;
 
+/**
+ * Dummy class to parse JSON object response
+ */
 public class CityTemperature {
     //region Konstanten
     // endregion

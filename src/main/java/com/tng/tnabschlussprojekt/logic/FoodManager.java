@@ -9,6 +9,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
+
+/**
+ * A Singleton-class to manage food,
+ * where in this class we have Observable list of food
+ */
 public class FoodManager {
     //region Konstanten
     private static FoodManager instance;
@@ -20,32 +25,29 @@ public class FoodManager {
 
     //region Konstruktoren
     private FoodManager() {
-        // change list to observable list, but this doesn't recognizable if we change one of the attributes
-        // we want all the attributes changes is also observable (i.e if you change the age, color, etc)
-        // therefore we need to use the callback and then add the listener
 
-        foods = FXCollections.observableList(TestData.getFoods(), food -> new Observable[]{
+        foods = FXCollections.observableList(DBManager.getInstance().fetchAll(), food -> new Observable[]{
                 food.nameProperty(), food.priceProperty(), food.caloriesProperty(), food.stockProperty(), food.expiredDateProperty(), food.supplierProperty()
         });
 
-//        tiers.addListener((ListChangeListener<Tier>) change -> {
-//            while(change.next()){
-//                if(change.wasUpdated()) {
-//                    System.out.println("Updated "+ change.wasUpdated());
-//                    Tier tier = change.getList().get(change.getFrom());
-//                    DBManager.getInstance().update(tier);
-//                }
-//                else if(change.wasAdded()){
-//                    System.out.println("added "+ change.getFrom());
-//                    Tier tier = change.getAddedSubList().getFirst();
-//                    DBManager.getInstance().insert(tier);
-//                }else if(change.wasRemoved()){
-//                    System.out.println("removed "+ change.getRemoved());
-//                    Tier tier = change.getRemoved().getFirst();
-//                    DBManager.getInstance().delete(tier);
-//                }
-//            }
-//        });
+        foods.addListener((ListChangeListener<Food>) change -> {
+            while(change.next()){
+                if(change.wasUpdated()) {
+                    System.out.println("Updated "+ change.wasUpdated());
+                    Food food = change.getList().get(change.getFrom());
+                    DBManager.getInstance().update(food);
+                }
+                else if(change.wasAdded()){
+                    System.out.println("added "+ change.getFrom());
+                    Food food = change.getAddedSubList().getFirst();
+                    DBManager.getInstance().insert(food);
+                }else if(change.wasRemoved()){
+                    System.out.println("removed "+ change.getRemoved());
+                    Food food = change.getRemoved().getFirst();
+                    DBManager.getInstance().delete(food);
+                }
+            }
+        });
     }
     //endregion
 

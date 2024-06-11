@@ -7,6 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * A Singleton-class to manage the scenes
+ */
 public class SceneManager {
     //region Konstanten
     private static SceneManager instance;

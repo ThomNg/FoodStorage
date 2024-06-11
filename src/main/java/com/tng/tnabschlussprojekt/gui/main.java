@@ -1,5 +1,9 @@
 package com.tng.tnabschlussprojekt.gui;
 
+/**
+ * another dummy class used in CityTemperature class
+ * to fetch city temperature, feels_like, temp_min, temp max, etc.
+ */
 public class main {
     //region Konstanten
     // endregion

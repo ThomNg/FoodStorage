@@ -2,9 +2,13 @@ package com.tng.tnabschlussprojekt.model;
 
 
 import javafx.beans.property.*;
-
 import java.time.LocalDate;
 
+/**
+ * Food model class
+ * a model of real world food object
+ * like Cucumber, Tomato, Orange, Beef, etc.
+ */
 public class Food {
     //region Konstanten
     // endregion
