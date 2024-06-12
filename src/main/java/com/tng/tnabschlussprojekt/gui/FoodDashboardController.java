@@ -8,7 +8,6 @@ import com.tng.tnabschlussprojekt.model.Food;
 import com.tng.tnabschlussprojekt.settings.AppText;
 import javafx.animation.AnimationTimer;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -79,16 +78,13 @@ public class FoodDashboardController {
                 listView.setItems(FoodManager.getInstance().filterBy(newV)));
 
         // weather api
-        cityComboBox.getItems().addAll("Aachen","Bremen","Berlin","Leipzig","Köln");
+        cityComboBox.getItems().addAll(AppText.CITY_AACHEN, AppText.CITY_BREMEN, AppText.CITY_BERLIN, AppText.CITY_LEIPZIG, AppText.CITY_COLOGNE);
         cityComboBox.getSelectionModel().selectFirst();
         try {
-            onSelectComboBox(null);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
+            onSelectComboBox();
+        } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
-
 
     }
 
@@ -98,51 +94,51 @@ public class FoodDashboardController {
     }
 
     @FXML
-    private void onSortNameBtn(ActionEvent actionEvent) {
+    private void onSortNameBtn() {
         ObservableList<Food> listTiers = FoodManager.getInstance().getFoods();
         listTiers.sort(Comparator.comparing(o -> o.getName().toLowerCase()));
     }
     @FXML
-    private void onSortPriceBtn(ActionEvent actionEvent) {
+    private void onSortPriceBtn() {
         ObservableList<Food> listTiers = FoodManager.getInstance().getFoods();
         listTiers.sort(Comparator.comparing(Food::getPrice));
     }
 
     @FXML
-    public void onSortCalorieBtn(ActionEvent actionEvent) {
+    public void onSortCalorieBtn() {
         ObservableList<Food> listTiers = FoodManager.getInstance().getFoods();
         listTiers.sort(Comparator.comparing(Food::getCalories));
     }
     @FXML
-    public void OnSortStockBtn(ActionEvent actionEvent) {
+    public void OnSortStockBtn() {
         ObservableList<Food> listTiers = FoodManager.getInstance().getFoods();
         listTiers.sort(Comparator.comparing(Food::getStock));
     }
     @FXML
-    public void OnSortSupplierBtn(ActionEvent actionEvent) {
+    public void OnSortSupplierBtn() {
         ObservableList<Food> listTiers = FoodManager.getInstance().getFoods();
         listTiers.sort(Comparator.comparing(o -> o.getSupplier().toLowerCase()));
     }
     @FXML
-    public void OnSortExpireBtn(ActionEvent actionEvent) {
+    public void OnSortExpireBtn() {
         ObservableList<Food> listTiers = FoodManager.getInstance().getFoods();
         listTiers.sort(Comparator.comparing(Food::getExpiredDate));
     }
     @FXML
-    private void OnClickAddFoodBtn(ActionEvent actionEvent) {
+    private void OnClickAddFoodBtn() {
         SceneManager.getInstance().switchToDetailWithFood(null);
     }
 
     @FXML
-    public void onSelectComboBox(ActionEvent actionEvent) throws IOException, InterruptedException {
-        String selectedCity = (String) cityComboBox.getValue();
+    public void onSelectComboBox() throws IOException, InterruptedException {
+        String selectedCity = cityComboBox.getValue();
         weatherLabel.setText(executeWeatherCall(selectedCity));
     }
 
     @FXML
     private static String executeWeatherCall(String selectedCity) throws IOException, InterruptedException {
         Gson gson = new Gson();
-        CityTemperature temperature = new CityTemperature();
+        CityTemperature temperature;
 
         HttpRequest getRequest = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.openweathermap.org/data/2.5/weather?q="+ selectedCity
@@ -150,11 +146,16 @@ public class FoodDashboardController {
                 .GET()
                 .header("Authorization", AppText.API_KEY).build();
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpResponse<String> getResponse = client.send(getRequest, HttpResponse.BodyHandlers.ofString());
-        //System.out.println(getResponse.body());
+        HttpResponse<String> getResponse;
+        try (HttpClient client = HttpClient.newHttpClient()) {
+            getResponse = client.send(getRequest, HttpResponse.BodyHandlers.ofString());
+        }
         temperature = gson.fromJson(getResponse.body(), CityTemperature.class);
-
         return temperature.getMain().getTemp() +" °C, "+temperature.getName();
     }
+
+    public void OnClickPieChart() {
+        SceneManager.getInstance().switchScene("PieChart.fxml");
+    }
+
 }

@@ -16,7 +16,7 @@ public class FoodCell extends ListCell<Food> {
             setText(null);
             setGraphic(null);
         }else{
-            setText(String.format(("%-10s %5.2f€ %5d Cal %5d-items %15s %15s"),food.getName(),food.getPrice(),food.getCalories(), food.getStock(),
+            setText(String.format(("%-15s %10.2f€ %10d Cal %10d-items %15s %15s"),food.getName(),food.getPrice(),food.getCalories(), food.getStock(),
                     food.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),food.getSupplier()));
             setFont(Font.font("Consolas"));
         }

@@ -49,7 +49,6 @@ public class FoodDetailsController {
     private Button editBtn;
 
     private Food selectedFood;
-
     //endregion
 
     //region Konstruktoren
@@ -93,6 +92,7 @@ public class FoodDetailsController {
         goToDashboardScene();
     }
 
+    @FXML
     public void onClickEditBtn(ActionEvent actionEvent) {
         if(selectedFood != null){
             setDisableTextField(false);
@@ -117,6 +117,7 @@ public class FoodDetailsController {
         SceneManager.getInstance().switchScene("FoodDashboard.fxml");
     }
 
+    @FXML
     public void OnClickSaveBtn(ActionEvent actionEvent) {
         try {
             String name = nameField.getText();

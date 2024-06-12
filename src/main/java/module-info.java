@@ -5,6 +5,7 @@ module com.tng.tnabschlussprojekt {
     requires org.mariadb.jdbc;
     requires com.google.gson;
     requires java.net.http;
+    requires org.checkerframework.checker.qual;
 
 
     opens com.tng.tnabschlussprojekt to javafx.fxml;
